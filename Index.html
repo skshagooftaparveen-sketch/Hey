@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Surprise 💖</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Comic Sans MS', cursive;
+    background:linear-gradient(135deg,#ff6f91,#ff9671,#ffc75f,#f9f871);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    color:black;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+.screen{
+    display:none;
+    width:90%;
+    max-width:600px;
+    margin-top:60px;
+}
+
+.screen.active{
+    display:block;
+}
+
+button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:#ff4f81;
+    color:white;
+    cursor:pointer;
+    margin-top:20px;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#ff1f5a;
+}
+
+#msgArea{
+    line-height:1.8em;
+    font-size:17px;
+    margin-top:20px;
+}
+
+.confetti{
+    position:absolute;
+    top:-30px;
+    font-size:24px;
+    animation:fall linear forwards;
+    pointer-events:none;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(300px) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* IMAGE GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 0 15px rgba(0,0,0,0.5);
+    transition:0.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 -->
+<div id="screen1" class="screen active">
+    <h1>Hey You 😉💖</h1>
+    <button onclick="startScreen2()">Click Me If You Dare 😏</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div id="screen2" class="screen">
+    <h2 id="funnyTextArea"></h2>
+    <button id="toMsgBtn" style="display:none;" onclick="showMessageScreen()">Next 🥰</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div id="screen3" class="screen">
+    <div id="msgArea"></div>
+    <div id="confettiContainer"></div>
+    <button id="toImageBtn" style="display:none;" onclick="showImageScreen()">See Surprise 🎁</button>
+</div>
+
+<!-- SCREEN 4 -->
+<div id="screen4" class="screen">
+    <h2>Our Memories 💕</h2>
+
+    <div class="gallery">
+        <img src="phot2.jpg" alt="">
+    </div>
+
+    <div id="rainContainer"></div>
+</div>
+
+<!-- SONG 1 -->
+<audio id="song1">
+    <source src="song1.mp4" type="audio/mp3">
+</audio>
+
+<script>
+
+let funnyText = "Scanning Cuteness Level... 20% 🐣 ... 60% 🐥 ... 100% 😍 ALERT! Maximum Cuteness Detected!";
+
+let funnyIndex = 0;
+
+let messageParagraphs = [
+
+`To my everything (biggest supporter , unpaid therapist, happiness,joy, encouragement and many more) 
+I wanted to write paragraphs, letters about you and fill all the colours of my life in the paper , but it's just a paper and it would get wrinkled and faded.
+So sending this small edit to youhh
+
+Pata nahi kaha se shuru Karu🥺
+
+Didn't even think that my farewell which is saying goodbye to you will come this fastt
+
+Time flew very fast that I feel like 
+"Kya jaldi bade hogaye hum"  and 
+Really if someone ask about friendship you will always be my first name 🥹
+
+So in 3rd year I will not be there sitting in the bench beside you😣🫂
+Laughing the fullest about small things, eating lunch, sharing gossips,
+Washroom walks , telling each everything about future and life, I will really miss all this funn😣😣🥺🫂
+
+Even in dreams didn't imagine that we wouldn't be together till 4 years and my journey in vignan was for 2 years 
+
+But  U are my stronggest gudiya💎🫂♥️
+Kabhi bhi khud ko akela mat samajhna
+I will always be there with my water bottle 🙂 , hassi ayina
+Aise hi haste rehna ,enjoy karna 
+U will always be my forever and ever best friend 
+U always brought my extrovert side 
+I survived very happily, poora clg ghooma ,mast memories banaye🫠
+So A big biggest THANK YOU✨😘🫂 for everything.
+
+Bhot kuch likhna na chahti hu
+But it will end up looking like assignment 😄
+
+Always remember,
+U can win every battle, deserve everything in the world,jattan rehna,and Inshallah you will go to abroad,job and everything 💝🤞
+
+This is the last paragraph aur kuch nai hai,it is becoming an assignment 😄 
+Sun yaaaraa🥺
+Tu apne logaku bhot khayal rakhti hai, but they always hurt you, maine bhi hurt Kiya hai ,so sorry for everything 🥹 . 
+
+And u give all your kindness to everyone without any egoness
+People who have have you in their life are the most luckiest. 
+
+Apna khayal rakhna💌,roj khaana khana,be healthy and achieve everything u wanted to 😊
+
+ jab 3rd year start hoga bilkul darna  mat , tu bohot brave hai and all the best for everything.
+
+I hope u will like those gifts 
+Zyada rona mat🫂🫂, jab tak mere pass phone hai mai msg karti rahungi beech beech me , jattan raho
+Holidays accha enjoy karna ,apna khayal rakhna
+
+THANK YOU FOR EVERYTHING 🥹🥹💝🫂
+
+WILL MISSSSS YOUUUUUUUUUUU MORE THAN WORDS🫠🫠😊💖
+
+
+// SCREEN 1 -> SCREEN 2
+function startScreen2(){
+
+    document.getElementById("screen1").classList.remove("active");
+    document.getElementById("screen2").classList.add("active");
+
+    typeFunny();
+
+    // PLAY FIRST SONG
+    document.getElementById("song1").play();
+}
+
+
+// TYPING EFFECT
+function typeFunny(){
+
+    if(funnyIndex < funnyText.length){
+
+        document.getElementById("funnyTextArea").innerHTML += funnyText.charAt(funnyIndex);
+
+        funnyIndex++;
+
+        setTimeout(typeFunny,50);
+
+    }else{
+
+        document.getElementById("toMsgBtn").style.display = "inline-block";
+    }
+}
+
+
+// SCREEN 2 -> SCREEN 3
+function showMessageScreen(){
+
+    document.getElementById("screen2").classList.remove("active");
+    document.getElementById("screen3").classList.add("active");
+
+    typeParagraphs(0);
+
+    startConfetti('confettiContainer');
+}
+
+
+// PARAGRAPH TYPING
+function typeParagraphs(index){
+
+    if(index >= messageParagraphs.length){
+
+        document.getElementById("toImageBtn").style.display = "inline-block";
+
+        return;
+    }
+
+    let para = messageParagraphs[index];
+
+    let container = document.getElementById("msgArea");
+
+    let charIndex = 0;
+
+    function typeChar(){
+
+        if(charIndex < para.length){
+
+            container.innerHTML += para.charAt(charIndex);
+
+            charIndex++;
+
+            setTimeout(typeChar,20);
+
+        }else{
+
+            container.innerHTML += "<br><br>";
+
+            setTimeout(()=>typeParagraphs(index+1),500);
+        }
+    }
+
+    typeChar();
+}
+
+
+// CONFETTI
+function startConfetti(containerId){
+
+    let container = document.getElementById(containerId);
+
+    setInterval(()=>{
+
+        const emojis = ["🎉","💖","✨","🌸","🥰","💫"];
+
+        let conf = document.createElement("div");
+
+        conf.classList.add("confetti");
+
+        conf.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+
+        conf.style.left = Math.random()*100 + "%";
+
+        conf.style.animationDuration = (Math.random()*3+2) + "s";
+
+        container.appendChild(conf);
+
+        setTimeout(()=>conf.remove(),4000);
+
+    },300);
+}
+
+
+// SCREEN 3 -> SCREEN 4
+function showImageScreen(){
+
+    document.getElementById("screen3").classList.remove("active");
+
+    document.getElementById("screen4").classList.add("active");
+
+    // STOP SONG 1
+    let s1 = document.getElementById("song1");
+    s1.pause();
+    s1.currentTime = 0;
+
+    startConfetti('rainContainer');
+}
+
+</script>
+
+</body>
+</html>
